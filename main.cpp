@@ -1,6 +1,6 @@
 /*
-Вариант №14 "Класс Bankomat"
-Студент: Коновалов Константин, АВТ-943
+Р’Р°СЂРёР°РЅС‚ в„–14 "РљР»Р°СЃСЃ Bankomat"
+РЎС‚СѓРґРµРЅС‚: РљРѕРЅРѕРІР°Р»РѕРІ РљРѕРЅСЃС‚Р°РЅС‚РёРЅ, РђР’Рў-943
 */
 #ifdef _WIN32
 #include "Bankomat.h"
@@ -10,14 +10,13 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
-#include <windows.h>
-#else
-#include <unistd.h>
+#include <stack>
+#include <map>
 #endif
 
 using namespace std;
 
-void testingMainClass() { //Тестирование
+void testingMainClass() { //РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ
 	Bankomat bankTest1("00000KKK", 1000);
 	Bankomat bankTest2("11111111", 900);
 	Test test;
@@ -56,16 +55,16 @@ void testingMainClass() { //Тестирование
 
 }
 
-void Info() { //Строковое представление 
+void Info() { //РЎС‚СЂРѕРєРѕРІРѕРµ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ 
 	Bankomat* bank_1 = new Bankomat("AAA111111", 10000);
 	Bankomat* bank_2 = new Bankomat("BBB222222", 20000);
 	Bankomat* bank_3 = new Bankomat("CCC333333", 30000);
 
 	cout << "\nInfo:";
 	cout << "\n\nid-number|money\n";
-	cout << bank_1->strObj() << std::endl;
-	cout << bank_2->strObj() << std::endl;
-	cout << bank_3->strObj();
+	cout << bank_1->toString() << std::endl;
+	cout << bank_2->toString() << std::endl;
+	cout << bank_3->toString();
 }
 
 void Exeptions() {
@@ -78,31 +77,22 @@ void Exeptions() {
 	bank.loadMoney(42);
 	bank.takeMoney(bank.getMin() - 1);
 	bank.takeMoney(bank.getMax() + 1);
-	bank_2->strObj();
+	bank_2->toString();
 }
 
 void testingHeirClass() {
-	AdressName bank("NSTU", "Lenina", "11111111", 10000);
-	time_t now = time(0);
-	char* date = ctime(&now);
-	Report bank2(NULL, nullptr, "Qwerty", "Marksa", "IDDQD0451", 10000);
-	Report bank3(NULL, nullptr, "SberBank", "Lenina", "OOOOO1234", 90000);
 	Test test;
-	cout << "Test 1: " << test.test_sec_destruct() << "\n";
-	cout << "Test 2: " << test.test_adress(&bank) << "\n";
-	cout << "Test 3: " << test.test_name(&bank) << "\n";
-	cout << "Test 4: " << test.test_date(&bank2, date) << "\n";
-	cout << "\nSuccessful: " << test.success2 << "/4";
+	cout << "Test 1 " << test.test_setters() << "\n";
+	cout << "Test 2 " << test.test_withdrawR_money_withdraws() << "\n";
+	cout << "Test 3 " << test.test_withdrawR_arrays_incr() << "\n";
+	cout << "\nSuccessful: " << test.success2 << "/3";
 	cout << "\nFailed: " << test.fail2 << "\n";
-	cout << bank2.generateReport(100) << endl;
-	Sleep(1000);
-	cout << bank3.generateReport(1000) << endl;
 }
 
 int main() {
 	//testingMainClass();
 	//Info();
 	//Exeptions();
-	testingHeirClass();
+	testingHeirClass(); //Lab 4
 	cin.get();
 }
