@@ -6,9 +6,12 @@ using namespace std;
 struct Test {
 	int success;
 	int success2;
+	int success3;
 	int fail; 
 	int fail2;
+	int fail3;
 	Test();
+
 	bool test_destruct();
 	bool test_id(Bankomat* test_bank);
 	bool test_get_max(Bankomat* test_bank);
@@ -31,8 +34,8 @@ struct Test {
 	bool test_text(FILE *file);
 	bool test_bin(FILE *file);
 
-	bool test_adress(AdressName* test_bank);
-	bool test_name(AdressName* test_bank);
-	bool test_date(Report* test_bank, const char* date);
-	bool test_sec_destruct();
+	//Child class:
+	bool test_setters();
+	bool test_withdrawR_money_withdraws();
+	bool test_withdrawR_arrays_incr();
 };
