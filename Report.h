@@ -2,15 +2,31 @@
 #include "Bankomat.h"
 #include "AdressName.h"
 
+class History {
+public:
+	friend class Report;
+	History();
+	~History();
+private:
+	int hist;
+	char* date = new char;
+};
+
 class Report: public AdressName{
 public:
 	Report();
-	Report(time_t now, const char* date, const char* name, const char* adress, const char* id, int _curr_amount);
+	Report(const AdressName& bank, const Bankomat& bankOr);
+	Report(const AdressName& bank, const Bankomat& bankOr, int a, int b);
+	void setHist(char* date, int money);
+	void showHist();
 	~Report();
-	void setDate();
-	char* getDate();
-	char* generateReport(int money);
+	void withdrawR(Bankomat& bankOr, int money);
+	int getHistRec();
+	int getHistAmout();
+	char* toString() override;
 private:
 	time_t now;
-	char* date;
+	int history_amount = 2;
+	int histRec = 0;
+	History* history = new History[history_amount];
 };
