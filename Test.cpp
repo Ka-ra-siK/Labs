@@ -5,19 +5,22 @@
 #include <ctime>
 #include <fstream>
 #include "Functions.h"
+#include "Tree.h"
 using namespace std;
 
 //Test::Test()
-//Присваиваем значения 0 успехам и провалам
+//РџСЂРёСЃРІР°РёРІР°РµРј Р·РЅР°С‡РµРЅРёСЏ 0 СѓСЃРїРµС…Р°Рј Рё РїСЂРѕРІР°Р»Р°Рј
 Test::Test() {
 	success = 0;
 	success2 = 0;
+	success3 = 0;
 	fail = 0;
 	fail2 = 0;
+	fail3 = 0;
 }
 
 //bool Test::test_destruct()
-//Тестируем диструктор
+//РўРµСЃС‚РёСЂСѓРµРј РґРёСЃС‚СЂСѓРєС‚РѕСЂ
 //return - true or false
 bool Test::test_destruct() {
 	Bankomat* bank = new Bankomat("OOO00000", 10000);
@@ -37,9 +40,9 @@ bool Test::test_destruct() {
 }
 
 //bool Test::test_id(Bankomat* test_bank)
-//Тестируем написания ID
+//РўРµСЃС‚РёСЂСѓРµРј РЅР°РїРёСЃР°РЅРёСЏ ID
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_id(Bankomat* test_bank) {
 	test_bank->setID("KKK11111");
@@ -59,9 +62,9 @@ bool Test::test_id(Bankomat* test_bank) {
 }
 
 //bool Test::test_get_max(Bankomat* test_bank)
-//Тестируем получение max
+//РўРµСЃС‚РёСЂСѓРµРј РїРѕР»СѓС‡РµРЅРёРµ max
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_get_max(Bankomat* test_bank) {
 	int expect = 10000;
@@ -78,9 +81,9 @@ bool Test::test_get_max(Bankomat* test_bank) {
 }
 
 //bool Test::test_get_min(Bankomat* test_bank) 
-//Тестируем получение min
+//РўРµСЃС‚РёСЂСѓРµРј РїРѕР»СѓС‡РµРЅРёРµ min
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_get_min(Bankomat* test_bank) {
 	int expect = 100;
@@ -97,9 +100,9 @@ bool Test::test_get_min(Bankomat* test_bank) {
 }
 
 //bool Test::test_cur_am(Bankomat* test_bank)
-//Тестируем установки значения в банкомат
+//РўРµСЃС‚РёСЂСѓРµРј СѓСЃС‚Р°РЅРѕРІРєРё Р·РЅР°С‡РµРЅРёСЏ РІ Р±Р°РЅРєРѕРјР°С‚
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_cur_am(Bankomat* test_bank) {
 	test_bank->setCurAmoun(1000);
@@ -117,9 +120,9 @@ bool Test::test_cur_am(Bankomat* test_bank) {
 }
 
 //bool Test::test_load_money(Bankomat* test_bank) 
-//Тестируем загрузки денег в автомат
+//РўРµСЃС‚РёСЂСѓРµРј Р·Р°РіСЂСѓР·РєРё РґРµРЅРµРі РІ Р°РІС‚РѕРјР°С‚
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_load_money(Bankomat* test_bank) {
 	test_bank->setCurAmoun(1000);
@@ -138,9 +141,9 @@ bool Test::test_load_money(Bankomat* test_bank) {
 }
 
 //bool Test::test_take_money(Bankomat* test_bank)
-//Тестируем снятие денег из автомата
+//РўРµСЃС‚РёСЂСѓРµРј СЃРЅСЏС‚РёРµ РґРµРЅРµРі РёР· Р°РІС‚РѕРјР°С‚Р°
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_take_money(Bankomat* test_bank) {
 	test_bank->setCurAmoun(5000);
@@ -159,16 +162,16 @@ bool Test::test_take_money(Bankomat* test_bank) {
 }
 
 //bool Test::test_str_obj(Bankomat* test_bank)
-//Тестируем строковое предлставление объекта 
+//РўРµСЃС‚РёСЂСѓРµРј СЃС‚СЂРѕРєРѕРІРѕРµ РїСЂРµРґР»СЃС‚Р°РІР»РµРЅРёРµ РѕР±СЉРµРєС‚Р° 
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_str_obj(Bankomat* test_bank) {
 	test_bank->setID("KKK11111");
 	test_bank->setCurAmoun(1000);
 	const char* expect = "KKK11111 1000";
 	const char* real;
-	real = test_bank->strObj();
+	real = test_bank->toString();
 
 	if (*expect == *real) {
 		success++;
@@ -182,9 +185,9 @@ bool Test::test_str_obj(Bankomat* test_bank) {
 }
 
 //bool Test::test_minus(Bankomat* bank)
-//Тестируем перегрузку -= 
+//РўРµСЃС‚РёСЂСѓРµРј РїРµСЂРµРіСЂСѓР·РєСѓ -= 
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_minus(Bankomat* bank) {
 	int x = 100;
@@ -202,9 +205,9 @@ bool Test::test_minus(Bankomat* bank) {
 	}
 }
 //bool Test::test_less(Bankomat* bank)
-//Тестируем перегрузку <
+//РўРµСЃС‚РёСЂСѓРµРј РїРµСЂРµРіСЂСѓР·РєСѓ <
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_less(Bankomat* bank) {
 
@@ -220,9 +223,9 @@ bool Test::test_less(Bankomat* bank) {
 }
 
 //bool Test::test_plus(Bankomat* bank)
-//Тестируем перегрузку +=
+//РўРµСЃС‚РёСЂСѓРµРј РїРµСЂРµРіСЂСѓР·РєСѓ +=
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_plus(Bankomat* bank) {
 	int x = 100;
@@ -240,9 +243,9 @@ bool Test::test_plus(Bankomat* bank) {
 	}
 }
 //bool Test::test_more(Bankomat* bank)
-//Тестируем перегрузку >
+//РўРµСЃС‚РёСЂСѓРµРј РїРµСЂРµРіСЂСѓР·РєСѓ >
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_more(Bankomat* bank) {
 
@@ -258,9 +261,9 @@ bool Test::test_more(Bankomat* bank) {
 }
 
 //bool Test::test_greater_and_equal(Bankomat* bank)
-//Тестируем перегрузку >=
+//РўРµСЃС‚РёСЂСѓРµРј РїРµСЂРµРіСЂСѓР·РєСѓ >=
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_greater_and_equal(Bankomat* bank) {
 	int x = 900; 
@@ -275,9 +278,9 @@ bool Test::test_greater_and_equal(Bankomat* bank) {
 
 }
 //bool Test::test_less_and_equal(Bankomat* bank)
-//Тестируем перегрузку =<
+//РўРµСЃС‚РёСЂСѓРµРј РїРµСЂРµРіСЂСѓР·РєСѓ =<
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_less_and_equal(Bankomat* bank) {
 	int x = 900; // x = current amount of money. Tests case of equity
@@ -292,9 +295,9 @@ bool Test::test_less_and_equal(Bankomat* bank) {
 	}
 }
 //bool Test::test_assignment(Bankomat* bank)
-//Тестируем перегрузку =
+//РўРµСЃС‚РёСЂСѓРµРј РїРµСЂРµРіСЂСѓР·РєСѓ =
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_assignment(Bankomat* bank) {
 	Bankomat* bank2 = new Bankomat("33333333", 20);
@@ -316,9 +319,9 @@ bool Test::test_assignment(Bankomat* bank) {
 	}
 }
 //bool Test::test_call_func(Bankomat* bank)
-//Тестируем перегрузку функции
+//РўРµСЃС‚РёСЂСѓРµРј РїРµСЂРµРіСЂСѓР·РєСѓ С„СѓРЅРєС†РёРё
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_call_func(Bankomat* bank) {
 
@@ -334,9 +337,9 @@ bool Test::test_call_func(Bankomat* bank) {
 }
 
 //bool Test::test_noLastOperation()
-//Тестируем перегрузку noLastOperation
+//РўРµСЃС‚РёСЂСѓРµРј РїРµСЂРµРіСЂСѓР·РєСѓ noLastOperation
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_noLastOperation(){
 	Bankomat bank; // there is NULL lastOp in object bank
@@ -351,7 +354,7 @@ bool Test::test_noLastOperation(){
 }
 
 //bool Test::test_text()
-//Тестируем input and output в Txt файле
+//РўРµСЃС‚РёСЂСѓРµРј input and output РІ Txt С„Р°Р№Р»Рµ
 //return - true or false
 bool Test::test_text(FILE *file) {
 	ofstream out(file);
@@ -403,7 +406,7 @@ bool Test::test_text(FILE *file) {
 }
 
 //bool Test::test_bin()
-//Тестируем input and output в Bin файле
+//РўРµСЃС‚РёСЂСѓРµРј input and output РІ Bin С„Р°Р№Р»Рµ
 //return - true or false
 bool Test::test_bin(FILE* file){
 	fstream out(file);//, ios::binary | ios::out);
@@ -451,90 +454,71 @@ bool Test::test_bin(FILE* file){
 	return true;
 }
 
-//bool Test::test_sec_destruct()
-//Тестируем диструктор
+//bool Test::test_setters()
+//РўРµСЃС‚РёСЂСѓРµРј СЃРµС‚С‚РµСЂС‹ РІ child РєР»Р°СЃСЃРµ
 //return - true or false
-bool Test::test_sec_destruct() {
-	AdressName* bank = new AdressName("NSTU", "Lenina", "11111111", 10000);
-	delete bank;
-	try {
-		if (bank->getName() == (char*)0xDDDDDDDD && 
-			bank->getAdress() == (char*)0xDDDDDDDD)
-			throw 1;
-		else {
-			fail2++;
-			return false;
-		}
-	}
-	catch (int a) {
-		success2++;
-		return true;
-	}
-}
-
-//bool Test::test_adress(AdressName* test_bank)
-//Тестируем написания Adress
-//args:
-// - Bankomat* test_bank - указатель на объект класса AdressName
-//return - true or false
-bool Test::test_adress(AdressName* test_bank) {
-	test_bank->setAdress("BankNSTU");
-	const char* expect = "BankNSTU";
-	const char* real;
-	real = test_bank->getAdress();
-
-	if (*expect == *real) {
+bool Test::test_setters() {
+	const char* newBankName = "ALPHA";
+	const char* newAdr = "Nemirovicha-Danchenko";
+	AdressName bankTest("MARX-20", "SBER", "11111111", 120);
+	bankTest.setName(newBankName);
+	bankTest.setAdress(newAdr);
+	if (strcmp(bankTest.getAdress(), newAdr) == 0 && strcmp(bankTest.getName(), newBankName) == 0) {
 		success2++;
 		return true;
 	}
 	else {
-		cout << "Expected: " << expect << " Real: " << real << "\n";
-		fail2++;
+		cout << "Expected: " << newAdr << " " << newBankName << endl;
+		cout << "Actual: " << bankTest.getAdress() << bankTest.getName() << endl;
+		fail++;
 		return false;
 	}
 }
 
-//bool Test::test_name(AdressName* test_bank)
-//Тестируем написания Name
-//args:
-// - Bankomat* test_bank - указатель на объект класса AdressName
+//bool Test::test_withdrawR_money_withdraws()
+//РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ СЃРЅСЏС‚РёСЏ РґРµРЅРµРі
 //return - true or false
-bool Test::test_name(AdressName* test_bank) {
-	test_bank->setName("Lenina");
-	const char* expect = "Lenina";
-	const char* real;
-	real = test_bank->getName();
-
-	if (*expect == *real) {
+bool Test::test_withdrawR_money_withdraws() {
+	Bankomat bankTest("1111111", 400);
+	AdressName bankLocTest("Pushkina-36", "Tinkoff", "11111111", 400);
+	Report recTest(bankLocTest, bankTest);
+	int expected = 300;
+	recTest.withdrawR(bankTest, 100);
+	if (expected == bankTest.getCurAmoun()) {
 		success2++;
 		return true;
 	}
 	else {
-		cout << "Expected: " << expect << " Real: " << real << "\n";
-		fail2++;
+		fail++;
 		return false;
 	}
 }
 
-//bool Test::test_date(Report* test_bank, const char* date)
-//Тестируем написания Date
-//args:
-// - Bankomat* test_bank - указатель на объект класса AdressName
-// - const char* date - указатель на дату
+//bool Test::test_withdrawR_arrays_incr()
+//РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ СѓРІРµР»РёС‡РµРЅРёСЏ СЂР°Р·РјРµСЂР° РјР°СЃСЃРёРІР° СЃ РґР°С‚РѕР№
 //return - true or false
-bool Test::test_date(Report* test_bank, const char* date) {
-	test_bank->setDate();
-	const char* expect = date;
-	const char* real;
-	real = test_bank->getDate();
-
-	if (*expect == *real) {
+bool Test::test_withdrawR_arrays_incr() {
+	Bankomat bankTest("1111111", 4000);
+	AdressName bankLocTest("Pushkina-36", "Tinkoff", "11111111", 4000);
+	Report recTest(bankLocTest, bankTest);
+	for (int i = 200; i <= 210; i++) {
+		recTest.withdrawR(bankTest, i);
+	}
+	if (recTest.getHistRec() > 2) {
+		cout << "Recipe made successfully" << endl;
+		cout << "Info: " << endl;
+		recTest.showHist();
 		success2++;
 		return true;
 	}
 	else {
-		cout << "Expected: " << expect << " Real: " << real << "\n";
-		fail2++;
+		cout << recTest.getHistRec() << endl;
+		cout << recTest.getHistAmout() << endl;
+		cout << "Recipe error " << endl;
+		cout << "Total size of arrays: " << recTest.getHistAmout() << endl;
+		cout << "Dates written: " << recTest.getHistRec() << endl;
+		recTest.showHist();
+		fail++;
 		return false;
 	}
 }
