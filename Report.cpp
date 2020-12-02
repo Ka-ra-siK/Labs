@@ -1,84 +1,131 @@
 #include "Report.h"
+#include <iostream>
+#include <ctime>
+#include "Functions.h"
+using std::cout;
+using std::cin;
 
-//Report::Report()
-//Стандартный конструктор для класса Report
-//Создает объект
-Report::Report(){
-	time_t now = NULL;
-	date = nullptr;
+//History::History()
+//РЎС‚Р°РЅРґР°СЂС‚РЅС‹Р№ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ РєР»Р°СЃСЃР° History
+//РЎРѕР·РґР°РµС‚ РѕР±СЉРµРєС‚
+History::History() {
+	hist = NULL;
+	date = NULL;
 }
 
-//Report::Report(time_t now, const char* date, const char* name, 
-//const char* adress, const char* id, int _curr_amount):AdressName(name, adress, id, _curr_amount)
-//Конструктор для класса Report
-//Создает объект
-//args:
-// - time_t now - вревенный тип данных, const char* date - дата
-// - const char* name - название банкомата, const char* adress - адрес расположения банкомата, 
-// - const char* id - id банкомата, int _curr_amount - кол-во денег в банкомате
-Report::Report(time_t now, const char* date, const char* name, 
-	const char* adress, const char* id, int _curr_amount):AdressName(name, adress, id, _curr_amount) {
-	try{
-		if (now == NULL || date == nullptr) throw 1;
-		now = time(0);
-		date = ctime(&now);
-	}
-		catch (int a) {
-		cout << "Invalid number of parameters" << endl;
-	}
-}
-
-//Report::~Report()
-//Деструктор класса Report
-//Удаляет динамические строки
-Report::~Report(){
+//History::~History()
+//РЎС‚Р°РЅРґР°СЂС‚РЅС‹Р№ РґРµСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° History
+//РЈРґР°Р»СЏРµС‚ РѕР±СЉРµРєС‚
+History::~History() {
 	delete[] date;
 }
 
-//void Report::setDate()
-//Задать дату
-void Report::setDate() {
-	now = time(0);
-	char* _date = ctime(&now);
-	try {
-		int len = strlen(_date);
-		if (len >= 256) throw 1;
-		date = new char[len + 1];
-		strcpy(date, _date);
+//Report::Report(const BankomatLoc& bank, const Bankomat& bankOr) : BankomatLoc(bank, bankOr)
+//РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Report. РЎРѕРґРµСЂР¶РёС‚ РїРѕР»СЏ Р±Р°Р·РѕРІРѕРіРѕ РєР»Р°СЃСЃР° Рё РµРіРѕ РЅР°СЃР»РµРґРЅРёРєР° 
+Report::Report(const AdressName& bank, const Bankomat& bankOr) : AdressName(bank, bankOr) {
+	History();
+}
+Report::Report(const AdressName& bank, const Bankomat& bankOr, int a, int b) : AdressName(bank, bankOr) {
+	History();
+	time_t now = time(0);
+	char* date = ctime(&now);
+	setHist(date, a);
+	setHist(date, b);
+}
+
+//Report::Report()
+//РЎС‚Р°РЅРґР°СЂС‚РЅС‹Р№ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ РєР»Р°СЃСЃР° Report
+//РЎРѕР·РґР°РµС‚ РѕР±СЉРµРєС‚
+Report::Report() {
+	History();
+}
+
+//Report::~Report()
+//РЎС‚Р°РЅРґР°СЂС‚РЅС‹Р№ РґРµСЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ РєР»Р°СЃСЃР° History
+//РЈРґР°Р»СЏРµС‚ РѕР±СЉРµРєС‚
+Report::~Report() {}
+
+//void Report::showHist()
+//РїРѕРєР°Р·С‹РІР°РµС‚ РјР°СЃСЃРёРІ
+void Report::showHist() {
+	for (unsigned short int i = 0; i < getHistRec(); i++) {
+		cout << "Withdrawn: " << history[i].hist << endl;
+		cout << " Date: " << history[i].date << endl;
+
 	}
-	catch (int a) {
-		cout << "Number of characters exceeded" << endl;
+}
+//void Report::setHist(Report& bank, char* date, int money)
+//Р·Р°РїРёСЃС‹РІР°РµС‚ РґР°С‚Сѓ Рё РґРµРЅСЊРіРё РІ РёСЃС‚РѕСЂРёСЋ
+//args
+//Report& bank -- РѕР±СЉРµРєС‚ Report, char* date -- date, int money -- money
+void Report::setHist(char* date, int money) {
+	history[histRec].date = _strdup(date);
+	history[histRec].hist = money;
+	histRec++;
+}
+//void Report::withdrawR(Bankomat& bankOr, int money)
+//РІС‹РІРѕРґ РґРµРЅРµРі 
+//args
+//Bankomat& bankOr -- Р±Р°РЅРє СЃ РєРѕС‚РѕСЂРѕРіРѕ СЃРЅРёРјР°СЋС‚ РґРµРЅСЊРіРё, int РґРµРЅСЊРіРё
+void Report::withdrawR(Bankomat& bankOr, int money) {
+	try {
+		if (money <= bankOr.getMax() && bankOr.getCurAmoun() >= money) {
+			bankOr.setCurAmoun(bankOr.getCurAmoun() - money);
+			time_t now = time(0);
+			char* date = ctime(&now);
+			setHist(date, money);
+		}
+		else throw 1;
+	}
+
+	catch (int ex) {
+		{
+			cout << "It isn`t allowed to withdraw greater than " << bankOr.getMax() << " per once" << endl;
+			cout << "Or you are trying to withdraw more than you have" << endl;
+		}
 	}
 }
 
-//char* Report::getDate()
-//Получить Дату
-//return - Дату
-char* Report::getDate() {
-	return date;
+//int Report::getHistRec()
+//returns С‡РёСЃР»Рѕ РЅР°РїРёСЃР°РЅРЅРѕР№ РґР°С‚С‹
+int Report::getHistRec() {
+	return this->histRec;
 }
 
-//char* Report::generateReport(int money)
-//Строковое предствление
-//return - информацию о банкомате
-char* Report::generateReport(int money) {
-	try {
-		char *adr, *name, *date;
-		adr = getAdress();
-		name = getName();
-		time_t now = time(0);
-		date = ctime(&now);
-		takeMoney(money);
-		char buf[16];
-		if (adr == NULL || name == NULL || money <= 0) throw 1;
-		sprintf(buf, "%d", money);
-		const char* money = buf;
-		int len = 32;
-		char* string = new char[len + 1];
-		sprintf(string, "%s %s %s %s %s", adr, name, Bankomat::strObj(), money, date);
-		return string;
+//int Report::getHistAmout()
+// returns СЂР°Р·РјРµСЂ РјР°СЃСЃРёРІР° СЃ РґР°С‚РѕР№
+int Report::getHistAmout() {
+	return this->history_amount;
+}
+
+//char* Report::toString()
+//РЎС‚СЂРѕРєРѕРІРѕРµ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ
+//return str - СЃС‚СЂРѕРєСѓ СЃ РёРЅС„РѕСЂРјР°С†РёРµР№
+char* Report::toString() {
+	char* oldStr = AdressName::toString();
+	char* hist;
+	char* money;
+	const char* newMoneyAnounce = "New Money Amount: ";
+	int newMoney = getCurAmoun();
+	char buf[1024];
+	char* secBuf = NULL;
+	char* str = new char[1024 + 1];
+	const char* moneyAnounce = "Money withdrawn: ";
+	if (getHistRec() != 0) {
+		hist = new char[1024];
 	}
-	catch (int a) {
-		cout << "Cannot be represented in a string representation" << endl;
+	else return oldStr;
+	for (int i = 0; i < getHistRec(); i++) {
+		money = (intToCharArr(history[i].hist));
+		hist = _strdup(history[i].date);
+		newMoney -= history[i].hist;
+		if (secBuf == NULL) {
+			secBuf = new char[1024 + 1];
+			sprintf(secBuf, "%s%s%s", hist, moneyAnounce, money);
+		}
+		else sprintf(secBuf, "%s\n%s%s %s", secBuf, hist, moneyAnounce, money);
 	}
+	sprintf(str, "%s\n%s", secBuf, oldStr);
+	sprintf(str, "%s\n%s%s", str, newMoneyAnounce, intToCharArr(newMoney));
+	return str;
 }
