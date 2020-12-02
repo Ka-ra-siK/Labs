@@ -2,20 +2,20 @@
 #include <cstring>
 
 //AdressName::AdressName()
-//Стандартный конструктор для класса AdressName
-//Создает объект
+//РЎС‚Р°РЅРґР°СЂС‚РЅС‹Р№ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ РєР»Р°СЃСЃР° AdressName
+//РЎРѕР·РґР°РµС‚ РѕР±СЉРµРєС‚
 AdressName::AdressName() {
 	bank_adress = nullptr;
 	bank_name = nullptr;
 }
 
 //AdressName::AdressName(const char* name, const char* adress, const char* id, int _curr_amount)
-//Конструктор для класса AdressName
-//Создает объект
+//РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ РєР»Р°СЃСЃР° AdressName
+//РЎРѕР·РґР°РµС‚ РѕР±СЉРµРєС‚
 //args:
-// - const char* name - название банкомата, const char* adress - адрес расположения банкомата, 
-// - const char* id - id банкомата, int _curr_amount - кол-во денег в банкомате
-AdressName::AdressName(const char* name, const char* adress, 
+// - const char* name - РЅР°Р·РІР°РЅРёРµ Р±Р°РЅРєРѕРјР°С‚Р°, const char* adress - Р°РґСЂРµСЃ СЂР°СЃРїРѕР»РѕР¶РµРЅРёСЏ Р±Р°РЅРєРѕРјР°С‚Р°, 
+// - const char* id - id Р±Р°РЅРєРѕРјР°С‚Р°, int _curr_amount - РєРѕР»-РІРѕ РґРµРЅРµРі РІ Р±Р°РЅРєРѕРјР°С‚Рµ
+AdressName::AdressName(const char* adress, const char* name,
 	const char* id, int _curr_amount): Bankomat(id, _curr_amount) {
 	try {
 		if (name == NULL || adress == NULL) throw 1;
@@ -27,36 +27,58 @@ AdressName::AdressName(const char* name, const char* adress,
 		strcpy(bank_adress, adress);
 	}
 	catch (int a) {
-		cout << "Invalid number of parameters" << endl;
+		//cout << "Invalid number of parameters" << endl;
 	}
 }
 
+//AdressName::AdressName(const AdressName& bank, const Bankomat& bankOr)
+//РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ РєР»Р°СЃСЃР° AdressName
+//РљРѕРїРёСЂСѓРµС‚ РѕР±СЉРµРєС‚С‹
+//args:
+// - const AdressName& bank - РѕР±СЉРµРєС‚ СЃ РєРѕС‚РѕСЂРѕРіРѕ СЃРЅРёРјР°РµС‚СЃСЏ РєРѕРїРёСЏ
+// - const Bankomat& bankOr - РєСѓРґР° РєРѕРїРёСЂРѕРІР°С‚СЊ
+AdressName::AdressName(const AdressName& bank, const Bankomat& bankOr)
+	:Bankomat(bankOr) {
+	if (bank.bank_adress)
+	{
+		this->bank_adress = new char[strlen(bank.bank_adress) + 1];
+		strcpy(this->bank_adress, bank.bank_adress);
+	}
+	else this->bank_adress = (char*)"Adress";
+	if (bank.bank_name)
+	{
+		this->bank_name = new char[strlen(bank.bank_name) + 1];
+		strcpy(this->bank_name, bank.bank_name);
+	}
+	else this->bank_name = (char*)"Name";
+}
+
 //AdressName::~AdressName()
-//Деструктор класса AdressName
-//Удаляет динамические строки
+//Р”РµСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° AdressName
+//РЈРґР°Р»СЏРµС‚ РґРёРЅР°РјРёС‡РµСЃРєРёРµ СЃС‚СЂРѕРєРё
 AdressName::~AdressName() {
 	delete[]  bank_adress;
 	delete[] bank_name;
 }
 
 //char* AdressName::getAdress()
-//Получить Adress объекта
-//return - Adress объекта
+//РџРѕР»СѓС‡РёС‚СЊ Adress РѕР±СЉРµРєС‚Р°
+//return - Adress РѕР±СЉРµРєС‚Р°
 char* AdressName::getAdress() {
 	return bank_adress;
 }
 
 //char* AdressName::getName()
-//Получить Name объекта
-//return - Name объекта
+//РџРѕР»СѓС‡РёС‚СЊ Name РѕР±СЉРµРєС‚Р°
+//return - Name РѕР±СЉРµРєС‚Р°
 char* AdressName::getName() {
 	return bank_name;
 }
 
 //void AdressName::setAdress(const char* adress)
-//Задать стороку Adress
+//Р—Р°РґР°С‚СЊ СЃС‚РѕСЂРѕРєСѓ Adress
 //args:
-// - const char* adress - Adress, который нужно вписать объекту
+// - const char* adress - Adress, РєРѕС‚РѕСЂС‹Р№ РЅСѓР¶РЅРѕ РІРїРёСЃР°С‚СЊ РѕР±СЉРµРєС‚Сѓ
 void AdressName::setAdress(const char* adress) {
 	try {
 		int len = strlen(adress);
@@ -70,9 +92,9 @@ void AdressName::setAdress(const char* adress) {
 }
 
 //void AdressName::setName(const char* name)
-//Задать стороку Name
+//Р—Р°РґР°С‚СЊ СЃС‚РѕСЂРѕРєСѓ Name
 //args:
-// - const char* name - Name, который нужно вписать объекту
+// - const char* name - Name, РєРѕС‚РѕСЂС‹Р№ РЅСѓР¶РЅРѕ РІРїРёСЃР°С‚СЊ РѕР±СЉРµРєС‚Сѓ
 void AdressName::setName(const char* name) {
 	try {
 		int len = strlen(name);
@@ -86,9 +108,9 @@ void AdressName::setName(const char* name) {
 }
 
 // istream & operator >> (istream & is, Bankomat & bank)
-//Перегрузка оператора >> 
+//РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° >> 
 // args:
-// istream& is -- поток, AdressName& bank -- банк
+// istream& is -- РїРѕС‚РѕРє, AdressName& bank -- Р±Р°РЅРє
 //returns stream
 istream& operator >> (istream& is, AdressName& bank) {
 	try{
@@ -104,11 +126,40 @@ istream& operator >> (istream& is, AdressName& bank) {
 	}
 }
 //istream& operator << (istream& os, Bankomat& bank)
-//Перегрузка оператора  << operator
+//РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР°  << operator
 // args:
-// istream& os -- поток, AdressName& bank -- банк
-//return поток
+// istream& os -- РїРѕС‚РѕРє, AdressName& bank -- Р±Р°РЅРє
+//return РїРѕС‚РѕРє
 ostream& operator << (ostream& os, AdressName& bank) {
 	os << bank.bank_adress << " " << bank.bank_name;
 	return os;
+}
+
+//char* AdressName::toString()
+//РЎС‚СЂРѕРєРѕРІРѕРµ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ
+//return str - СЃС‚СЂРѕРєСѓ СЃ РёРЅС„РѕСЂРјР°С†РёРµР№
+char* AdressName::toString() {
+	char* str = new char[256];
+	const char* bankAnounce = " Bank: ";
+	const char* adrAnounce = " Location: ";
+	char* bank_name = this->getName();
+	char* bank_adress = this->getAdress();
+
+	memcpy(str, bankAnounce, strlen(bankAnounce));
+	int sum = strlen(bankAnounce);
+
+	memcpy(str + sum, bank_name, strlen(bank_name));
+	sum += strlen(bank_name);
+
+	memcpy(str + sum, adrAnounce, strlen(adrAnounce));
+	sum += strlen(adrAnounce);
+
+	memcpy(str + sum, bank_adress, strlen(bank_adress));
+	sum += strlen(bank_adress);
+
+	char* buf = Bankomat::toString();
+	memcpy(str + sum, buf, strlen(buf));
+	sum += strlen(buf);
+	str[sum] = '\0';
+	return str;
 }
