@@ -7,12 +7,12 @@
 #include <stdlib.h>
 #include <sstream> 
 using namespace std;
-//Присваиваем статистической константе максимальное значение денег
-//которое можно снять за раз
+//РџСЂРёСЃРІР°РёРІР°РµРј СЃС‚Р°С‚РёСЃС‚РёС‡РµСЃРєРѕР№ РєРѕРЅСЃС‚Р°РЅС‚Рµ РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РґРµРЅРµРі
+//РєРѕС‚РѕСЂРѕРµ РјРѕР¶РЅРѕ СЃРЅСЏС‚СЊ Р·Р° СЂР°Р·
 const int Bankomat::MAX_AMOUNT = 10000;
 
-//Присваиваем статистической константе минимальное значение денег
-//которое можно снять за раз
+//РџСЂРёСЃРІР°РёРІР°РµРј СЃС‚Р°С‚РёСЃС‚РёС‡РµСЃРєРѕР№ РєРѕРЅСЃС‚Р°РЅС‚Рµ РјРёРЅРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РґРµРЅРµРі
+//РєРѕС‚РѕСЂРѕРµ РјРѕР¶РЅРѕ СЃРЅСЏС‚СЊ Р·Р° СЂР°Р·
 const int Bankomat::MIN_AMOUNT = 100;
 
 //int diff(int x, int y)
@@ -47,8 +47,8 @@ char* intToChar(int num) {
 }
 
 //Bankomat::Bankomat()
-//Стандартный конструктор для класса Bankomat
-//Создает объект
+//РЎС‚Р°РЅРґР°СЂС‚РЅС‹Р№ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ РєР»Р°СЃСЃР° Bankomat
+//РЎРѕР·РґР°РµС‚ РѕР±СЉРµРєС‚
 Bankomat::Bankomat() {
 	id_number = nullptr;
 	current_amount = 0;
@@ -56,11 +56,11 @@ Bankomat::Bankomat() {
 }
 
 //Bankomat::Bankomat(const char* id, int _curr_amount)
-//Конструктор для класса Bankomat
-//Создает объект
+//РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ РєР»Р°СЃСЃР° Bankomat
+//РЎРѕР·РґР°РµС‚ РѕР±СЉРµРєС‚
 //args:
-// - const char* id - id банкомата, int _curr_amount - кол-во денег в банкомате
-Bankomat::Bankomat(const char* id, int _curr_amount) { //Конструктор с параметром
+// - const char* id - id Р±Р°РЅРєРѕРјР°С‚Р°, int _curr_amount - РєРѕР»-РІРѕ РґРµРЅРµРі РІ Р±Р°РЅРєРѕРјР°С‚Рµ
+Bankomat::Bankomat(const char* id, int _curr_amount) { //РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂРѕРј
 	try{
 		if (id == NULL || _curr_amount == 0) throw 1;
 		int len = strlen(id);
@@ -70,7 +70,7 @@ Bankomat::Bankomat(const char* id, int _curr_amount) { //Конструктор с параметро
 		lastOp = NULL;
 	}
 	catch (int a){
-		cout << "Invalid number of parameters" << endl;
+		//cout << "Invalid number of parameters" << endl;
 	}
 }
 
@@ -85,32 +85,17 @@ Bankomat::Bankomat(const Bankomat& bank) {
 	current_amount = bank.current_amount;
 }
 
-//Bankomat::Bankomat(const Bankomat& bank)
-//Конструктор копирования класса Bankomat
-//Копирует объекты
-//args:
-// - const Bankomat& bank - объект с которого снимается копия
-/*Bankomat::Bankomat(const Bankomat& bank) {
-	if (bank.id_number) {
-		id_number = new char[strlen(bank.id_number) + 1];
-		strcpy(id_number, bank.id_number);
-	}
-	else id_number = (char*)"OOO000000";
-
-	current_amount = bank.current_amount;
-}*/
-
 //Bankomat::~Bankomat()
-//Деструктор класса Bankomat
-//Удаляет динамическую строку
+//Р”РµСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° Bankomat
+//РЈРґР°Р»СЏРµС‚ РґРёРЅР°РјРёС‡РµСЃРєСѓСЋ СЃС‚СЂРѕРєСѓ
 Bankomat::~Bankomat() {
 	delete[] id_number;
 }
 
 //void Bankomat::SetID(const char* id)
-//Задать стороку ID
+//Р—Р°РґР°С‚СЊ СЃС‚РѕСЂРѕРєСѓ ID
 //args:
-// - const char* id - ID, который нужно вписать объекту
+// - const char* id - ID, РєРѕС‚РѕСЂС‹Р№ РЅСѓР¶РЅРѕ РІРїРёСЃР°С‚СЊ РѕР±СЉРµРєС‚Сѓ
 void Bankomat::setID(const char* id) {
 	try{
 		int len = strlen(id);
@@ -124,30 +109,30 @@ void Bankomat::setID(const char* id) {
 }
 
 //char* Bankomat::GetID()
-//Получить ID объекта
-//return - id номер объекта
+//РџРѕР»СѓС‡РёС‚СЊ ID РѕР±СЉРµРєС‚Р°
+//return - id РЅРѕРјРµСЂ РѕР±СЉРµРєС‚Р°
 char* Bankomat::getID() {
 	return id_number;
 }
 
 //const int Bankomat::GetMax()
-//Получить Максимальное кол-во денег для снятия
-//return - максимально количество денег для снятия
+//РџРѕР»СѓС‡РёС‚СЊ РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»-РІРѕ РґРµРЅРµРі РґР»СЏ СЃРЅСЏС‚РёСЏ
+//return - РјР°РєСЃРёРјР°Р»СЊРЅРѕ РєРѕР»РёС‡РµСЃС‚РІРѕ РґРµРЅРµРі РґР»СЏ СЃРЅСЏС‚РёСЏ
 const int Bankomat::getMax() {
 	return MAX_AMOUNT;
 }
 
 //const int Bankomat::GetMin()
-//Получить Минимальное кол-во денег для снятия
-//return - минимальное количество денег для снятия
-const int Bankomat::getMin() { //Получить минимально количество денег для снятия или вложения
+//РџРѕР»СѓС‡РёС‚СЊ РњРёРЅРёРјР°Р»СЊРЅРѕРµ РєРѕР»-РІРѕ РґРµРЅРµРі РґР»СЏ СЃРЅСЏС‚РёСЏ
+//return - РјРёРЅРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РґРµРЅРµРі РґР»СЏ СЃРЅСЏС‚РёСЏ
+const int Bankomat::getMin() { //РџРѕР»СѓС‡РёС‚СЊ РјРёРЅРёРјР°Р»СЊРЅРѕ РєРѕР»РёС‡РµСЃС‚РІРѕ РґРµРЅРµРі РґР»СЏ СЃРЅСЏС‚РёСЏ РёР»Рё РІР»РѕР¶РµРЅРёСЏ
 	return MIN_AMOUNT;
 }
 
 //void Bankomat::SetCurAmoun(int _current_amount)
-//Задать кол-во денег в банкомате
+//Р—Р°РґР°С‚СЊ РєРѕР»-РІРѕ РґРµРЅРµРі РІ Р±Р°РЅРєРѕРјР°С‚Рµ
 //args:
-// - int _current_amount - количество денег, которые нужно присвоить банкомату
+// - int _current_amount - РєРѕР»РёС‡РµСЃС‚РІРѕ РґРµРЅРµРі, РєРѕС‚РѕСЂС‹Рµ РЅСѓР¶РЅРѕ РїСЂРёСЃРІРѕРёС‚СЊ Р±Р°РЅРєРѕРјР°С‚Сѓ
 void Bankomat::setCurAmoun(int _current_amount) {
 	try{
 		if (_current_amount < MIN_AMOUNT || _current_amount > MAX_AMOUNT) throw 1;
@@ -159,16 +144,16 @@ void Bankomat::setCurAmoun(int _current_amount) {
 }
 
 //int Bankomat::GetCurAmoun()
-//Узнать кол-во денег в банкомате
-//return - количество денег в банкомате
+//РЈР·РЅР°С‚СЊ РєРѕР»-РІРѕ РґРµРЅРµРі РІ Р±Р°РЅРєРѕРјР°С‚Рµ
+//return - РєРѕР»РёС‡РµСЃС‚РІРѕ РґРµРЅРµРі РІ Р±Р°РЅРєРѕРјР°С‚Рµ
 int Bankomat::getCurAmoun() {
 	return current_amount;
 }
 
 //void Bankomat::LoadMoney(int money) { 
-//Загрузка денег в банкомат
+//Р—Р°РіСЂСѓР·РєР° РґРµРЅРµРі РІ Р±Р°РЅРєРѕРјР°С‚
 //args:
-// - int money - Деньги, которые нужно внести в банкомат
+// - int money - Р”РµРЅСЊРіРё, РєРѕС‚РѕСЂС‹Рµ РЅСѓР¶РЅРѕ РІРЅРµСЃС‚Рё РІ Р±Р°РЅРєРѕРјР°С‚
 void Bankomat::loadMoney(int money) {
 	try{
 		if (money < MIN_AMOUNT) throw 1;
@@ -183,9 +168,9 @@ void Bankomat::loadMoney(int money) {
 }
 
 //void Bankomat::TakeMoney(int money) { 
-//Взятие денег с банкомата
+//Р’Р·СЏС‚РёРµ РґРµРЅРµРі СЃ Р±Р°РЅРєРѕРјР°С‚Р°
 //args:
-// - int money - деньги, которые нужно снять с банкомата
+// - int money - РґРµРЅСЊРіРё, РєРѕС‚РѕСЂС‹Рµ РЅСѓР¶РЅРѕ СЃРЅСЏС‚СЊ СЃ Р±Р°РЅРєРѕРјР°С‚Р°
 void Bankomat::takeMoney(int money) {
 	try {
 		if (money < MIN_AMOUNT || money > MAX_AMOUNT) throw 1;
@@ -199,23 +184,21 @@ void Bankomat::takeMoney(int money) {
 	}
 }
 
-//void Bankomat::StrObj() { 
-//Строковое предствление
-//return - информация о id-номере банкомата и кол-ве денег в нём
-char* Bankomat::strObj() {
+//void Bankomat::toString() { 
+//РЎС‚СЂРѕРєРѕРІРѕРµ РїСЂРµРґСЃС‚РІР»РµРЅРёРµ
+//return - РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ id-РЅРѕРјРµСЂРµ Р±Р°РЅРєРѕРјР°С‚Р° Рё РєРѕР»-РІРµ РґРµРЅРµРі РІ РЅС‘Рј
+char* Bankomat::toString() {
 	try{
-		char* id;
-		id = getID();
-		char buf[16];
-		int i = getCurAmoun();
-		if (id == NULL || i == 0) throw 1;
-		sprintf(buf, "%d", i);
-		const char* money = buf;
-		int len = 32;
-		char* string = new char[len + 1];
-		sprintf(string, "%s %s", id, money);
-
-		return string;
+		int N = 32;
+		char* str = new char[N];
+		int sizeId = strlen(id_number);
+		int sizeAmount = strlen(intToCharArr(current_amount));
+		int sizeMaxAmount = strlen(intToCharArr(MAX_AMOUNT));
+		memcpy(str, id_number, sizeId);
+		memcpy(str + sizeId, intToCharArr(current_amount), sizeAmount);
+		memcpy(str + sizeId + sizeAmount, intToCharArr(MAX_AMOUNT), sizeMaxAmount);
+		str[sizeId + sizeAmount + sizeMaxAmount] = '\0';
+		return str;
 	}
 	catch (int a){
 		cout << "Cannot be represented in a string representation" << endl;
@@ -223,7 +206,7 @@ char* Bankomat::strObj() {
 }
 
 //void Bankomat::setLastOp(int money)
-//Последняя операция
+//РџРѕСЃР»РµРґРЅСЏСЏ РѕРїРµСЂР°С†РёСЏ
 void Bankomat::setLastOp(int money) {
 	int N = 32;
 	this->lastOp = new char[N];
@@ -242,29 +225,29 @@ void Bankomat::setLastOp(int money) {
 }
 
 //void Bankomat::operator -=(int amount)
-//Перегрузка оператора -=
+//РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° -=
 //args: 
-// - int value - деньги
+// - int value - РґРµРЅСЊРіРё
 
 void Bankomat::operator -= (int value) {
 	takeMoney(value);
 }
 
 //void Bankomat::operator +=(int amount)
-//Перегрузка оператора += 
+//РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° += 
 //args: 
-// - int value - деньги
+// - int value - РґРµРЅСЊРіРё
 
 void Bankomat::operator += (int value) {
 	loadMoney(value);
 }
 
 //bool operator > (Bankomat& bank, int value)
-//Перегрузка оператора >
+//РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° >
 //args: 
-//-Bankomat * test_bank - указатель на объект класса Bankomat
-// - int value - деньги
-// return разницу между текущей суммой и сравниваемой суммой
+//-Bankomat * test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
+// - int value - РґРµРЅСЊРіРё
+// return СЂР°Р·РЅРёС†Сѓ РјРµР¶РґСѓ С‚РµРєСѓС‰РµР№ СЃСѓРјРјРѕР№ Рё СЃСЂР°РІРЅРёРІР°РµРјРѕР№ СЃСѓРјРјРѕР№
 
 bool operator > (Bankomat& bank, int value) {
 
@@ -280,10 +263,10 @@ bool operator > (Bankomat& bank, int value) {
 }
 
 //void Bankomat::operator <(int value)
-//Перегрузка оператора < 
+//РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° < 
 //args: 
-// - int value - деньги
-//return разницу между текущей суммой и сравниваемой суммой
+// - int value - РґРµРЅСЊРіРё
+//return СЂР°Р·РЅРёС†Сѓ РјРµР¶РґСѓ С‚РµРєСѓС‰РµР№ СЃСѓРјРјРѕР№ Рё СЃСЂР°РІРЅРёРІР°РµРјРѕР№ СЃСѓРјРјРѕР№
 
 bool Bankomat::operator < (int value) {
 
@@ -298,10 +281,10 @@ bool Bankomat::operator < (int value) {
 }
 
 //void Bankomat::operator >= (int value)
-//Перегрузка оператора >=
+//РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° >=
 //args: 
-// - int value - деньги
-// вводит разницу между текущей суммой и сравниваемой суммой или вводит сообщение о том, что обе равны
+// - int value - РґРµРЅСЊРіРё
+// РІРІРѕРґРёС‚ СЂР°Р·РЅРёС†Сѓ РјРµР¶РґСѓ С‚РµРєСѓС‰РµР№ СЃСѓРјРјРѕР№ Рё СЃСЂР°РІРЅРёРІР°РµРјРѕР№ СЃСѓРјРјРѕР№ РёР»Рё РІРІРѕРґРёС‚ СЃРѕРѕР±С‰РµРЅРёРµ Рѕ С‚РѕРј, С‡С‚Рѕ РѕР±Рµ СЂР°РІРЅС‹
 
 bool Bankomat::operator >= (int value) {
 	if (this->current_amount == value) {
@@ -314,10 +297,10 @@ bool Bankomat::operator >= (int value) {
 }
 
 //bool Bankomat::operator <= (int value)
-//Перегрузка оператора <= 
+//РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° <= 
 //args: 
-// - int value - деньги
-// вводит разницу между текущей суммой и сравниваемой суммой или вводит сообщение о том, что обе равны
+// - int value - РґРµРЅСЊРіРё
+// РІРІРѕРґРёС‚ СЂР°Р·РЅРёС†Сѓ РјРµР¶РґСѓ С‚РµРєСѓС‰РµР№ СЃСѓРјРјРѕР№ Рё СЃСЂР°РІРЅРёРІР°РµРјРѕР№ СЃСѓРјРјРѕР№ РёР»Рё РІРІРѕРґРёС‚ СЃРѕРѕР±С‰РµРЅРёРµ Рѕ С‚РѕРј, С‡С‚Рѕ РѕР±Рµ СЂР°РІРЅС‹
 bool Bankomat::operator <= (int value) {
 
 	if (this->current_amount == value) {
@@ -330,10 +313,10 @@ bool Bankomat::operator <= (int value) {
 }
 
 // Bankomat& Bankomat::operator = (const Bankomat& bank)
-//Перегрузка оператора =
+//РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° =
 //args: 
-// - const Bankomat& bank - объект для оператора =
-// returns копия объекта
+// - const Bankomat& bank - РѕР±СЉРµРєС‚ РґР»СЏ РѕРїРµСЂР°С‚РѕСЂР° =
+// returns РєРѕРїРёСЏ РѕР±СЉРµРєС‚Р°
 Bankomat& Bankomat::operator = (const Bankomat& bank) {
 
 	if (&bank == this) {
@@ -349,9 +332,9 @@ Bankomat& Bankomat::operator = (const Bankomat& bank) {
 }
 
 //char* Bankomat::operator() ()
-//Перегрузка оператора ()
+//РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° ()
 //args: 
-// returns последняя операция в формате: ID, деньги внесены или сняты
+// returns РїРѕСЃР»РµРґРЅСЏСЏ РѕРїРµСЂР°С†РёСЏ РІ С„РѕСЂРјР°С‚Рµ: ID, РґРµРЅСЊРіРё РІРЅРµСЃРµРЅС‹ РёР»Рё СЃРЅСЏС‚С‹
 char* Bankomat::operator() () const {
 	if (lastOp == NULL) {
 		char* noLastOp = (char*)"No last operations found";
@@ -361,9 +344,9 @@ char* Bankomat::operator() () const {
 }
 
 // istream & operator >> (istream & is, Bankomat & bank)
-//Перегрузка оператора >> 
+//РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° >> 
 // args:
-// istream& is -- поток, Bankomat& bank -- банк
+// istream& is -- РїРѕС‚РѕРє, Bankomat& bank -- Р±Р°РЅРє
 //returns stream
 istream& operator >> (istream& is, Bankomat& bank) {
 
@@ -376,16 +359,16 @@ istream& operator >> (istream& is, Bankomat& bank) {
 	return is;
 }
 //istream& operator << (istream& os, Bankomat& bank)
-//Перегрузка оператора  << operator
+//РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР°  << operator
 // args:
-// istream& os -- поток, Bankomat& bank -- банк
-//return поток
+// istream& os -- РїРѕС‚РѕРє, Bankomat& bank -- Р±Р°РЅРє
+//return РїРѕС‚РѕРє
 ostream& operator << (ostream& os, Bankomat& bank) {
 	os << bank.id_number << " " << bank.current_amount << " " << bank.MAX_AMOUNT;
 	return os;
 }
 //void Bankomat::toTxt(ofstream& out)
-//ввод информации в txt
+//РІРІРѕРґ РёРЅС„РѕСЂРјР°С†РёРё РІ txt
 // args:
 // oftream& out -- txt
 void Bankomat::toTxt(ofstream& out) {
@@ -393,15 +376,11 @@ void Bankomat::toTxt(ofstream& out) {
 }
 
 //void Bankomat::toBin(fstream& out)
-//ввод информации в bin
+//РІРІРѕРґ РёРЅС„РѕСЂРјР°С†РёРё РІ bin
 // args:
-// fstream& out -- bin файл
+// fstream& out -- bin С„Р°Р№Р»
 void Bankomat::toBin(fstream& out) {
-	//char* lenId = new char[2];
-	//lenId[0] = strlen(id_number) + '0';
-	//lenId[1] = '\0';
 	int lenId = strlen(id_number);
-	//out.write(lenId, sizeof(lenId));
 	out.write((char*)&lenId, sizeof(lenId));
 	out.write(id_number, strlen(id_number));
 	out.write((char*)&current_amount, sizeof(current_amount));
@@ -409,10 +388,10 @@ void Bankomat::toBin(fstream& out) {
 }
 
 //Bankomat* Bankomat::outTxt(ifstream& in)
-//вывод информации из txt
+//РІС‹РІРѕРґ РёРЅС„РѕСЂРјР°С†РёРё РёР· txt
 // args:
 // iftream& in -- txt
-//return банковский массив со всеми данными из txt
+//return Р±Р°РЅРєРѕРІСЃРєРёР№ РјР°СЃСЃРёРІ СЃРѕ РІСЃРµРјРё РґР°РЅРЅС‹РјРё РёР· txt
 Bankomat* Bankomat::outTxt(ifstream& in) {
 	Bankomat* bank = new Bankomat;
 	int N = lineAmount(in);
@@ -425,10 +404,10 @@ Bankomat* Bankomat::outTxt(ifstream& in) {
 }
 
 //Bankomat* Bankomat::outBin(fstream& in)
-//вывод информации из bim
+//РІС‹РІРѕРґ РёРЅС„РѕСЂРјР°С†РёРё РёР· bim
 //args:
 // fstream& in -- bin
-//returns банковский массив со всеми данными из bin
+//returns Р±Р°РЅРєРѕРІСЃРєРёР№ РјР°СЃСЃРёРІ СЃРѕ РІСЃРµРјРё РґР°РЅРЅС‹РјРё РёР· bin
 Bankomat* Bankomat::outBin(fstream& in) {
 	char* lenId = new char[2];
 	int lenIDArr = 2;
