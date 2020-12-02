@@ -1,6 +1,6 @@
 /*
-Вариант №14 "Класс Bankomat"
-Студент: Коновалов Константин, АВТ-943
+Г‚Г Г°ГЁГ Г­ГІ В№14 "ГЉГ«Г Г±Г± Bankomat"
+Г‘ГІГіГ¤ГҐГ­ГІ: ГЉГ®Г­Г®ГўГ Г«Г®Гў ГЉГ®Г­Г±ГІГ Г­ГІГЁГ­, ГЂГ‚Г’-943
 */
 #ifdef _WIN32
 #include "Bankomat.h"
@@ -16,7 +16,7 @@
 
 using namespace std;
 
-void testingMainClass() { //Тестирование
+void testingMainClass() { //Г’ГҐГ±ГІГЁГ°Г®ГўГ Г­ГЁГҐ
 	Bankomat bankTest1("00000KKK", 1000);
 	Bankomat bankTest2("11111111", 900);
 	Test test;
@@ -55,7 +55,7 @@ void testingMainClass() { //Тестирование
 
 }
 
-void Info() { //Строковое представление 
+void Info() { //Г‘ГІГ°Г®ГЄГ®ГўГ®ГҐ ГЇГ°ГҐГ¤Г±ГІГ ГўГ«ГҐГ­ГЁГҐ 
 	Bankomat* bank_1 = new Bankomat("AAA111111", 10000);
 	Bankomat* bank_2 = new Bankomat("BBB222222", 20000);
 	Bankomat* bank_3 = new Bankomat("CCC333333", 30000);
@@ -100,105 +100,11 @@ void testingPolymorh() {
 	cout << "Failed: " << test.fail3 << endl;
 }
 
-void stackTest() { // Стек
-	cout << "Stack input" << endl;
-	stack<int> test;
-	int size = 1000000;
-	int i = 0;
-	int before = clock();
-	while (i != size) {
-		test.push(size);
-		size--;
-	}
-	cout << "Time:" << clock() - before << endl;
-	cout << "Stack delete" << endl;
-	before = clock();
-	while (!test.empty()) {
-		test.pop();
-	}
-	cout << "Time:" << clock() - before << endl;
-	cout << "Stack Bank input" << endl;
-	stack<Bankomat> testBank;
-	int sizeBank = 1000000;
-	int ii = 0;
-	before = clock();
-	while (ii != sizeBank) {
-		testBank.push(Bankomat("1111111", sizeBank));
-		sizeBank--;
-	}
-	cout << "Time:" << clock() - before << endl;
-	cout << "Stack Bank delete" << endl;
-	before = clock();
-	while (!testBank.empty()) {
-		testBank.pop();
-	}
-	cout << "Time:" << clock() - before << endl;
-}
-
-void multiMapTest() { //Словарь с дубликатами
-	multimap<int, int> map;
-	int before = clock();
-	cout << "Multimap insert" << endl;
-	std::multimap<int, int>::const_iterator itt = map.begin();
-	for (int i = 0; i < 100000; i++)
-	{
-		map.insert(itt, pair<int, int>(i, rand()));
-	}
-	cout << "time: " << clock() - before << endl;
-	cout << "Multimap find" << endl;
-	int value = 1234;
-	before = clock();
-	std::multimap<int, int>::const_iterator found = map.find(value);
-	cout << found->second << endl;
-	cout << "Time " << clock() - before << endl;
-	cout << "Multimap delete" << endl;
-	before = clock();
-	for (int i = 0; i < 100000; i++)
-	{
-		map.erase(i);
-	}
-	cout << "Time " << clock() - before << endl;
-	multimap<int, Bankomat> mapBank;
-	before = clock();
-	
-	cout << "Multimap Bank insert" << endl;
-	std::multimap<int, Bankomat>::iterator it = mapBank.begin();
-	for (int i = 0; i < 10000; i++)
-	{
-		Bankomat bank("111111111", rand());
-		mapBank.insert(it, pair<int, Bankomat>(i, bank));
-	}
-	cout << "time: " << clock() - before << endl;
-	
-	cout << "MultimapBank find" << endl;
-	value = 1234;
-	before = clock();
-	std::multimap<int, Bankomat>::iterator foundBank = mapBank.find(value);
-	cout << foundBank->second << endl;
-	cout << "Time " << clock() - before << endl;
-	cout << "Multimap delete" << endl;
-	before = clock();
-	for (int i = 0; i < 100000; i++)
-	{
-		mapBank.erase(i);
-	}
-	cout << "Time " << clock() - before << endl;
-}
-
-void testingTemp() {
-	cout << "\n\nStack" << endl;
-	stackTest();
-	cout << "MultiMap" << endl;
-	multiMapTest();
-	cout << "\n\nEnd";
-}
-
 int main() {
 	//testingMainClass();
 	//Info();
 	//Exeptions();
 	//testingHeirClass(); //Lab 4
 	testingPolymorh(); //Lab 5
-	//testingTemp(); //Lab 8
 	cin.get();
 }
