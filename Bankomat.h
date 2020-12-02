@@ -19,7 +19,7 @@ public:
 	int getCurAmoun(); 
 	void loadMoney(int money); 
 	void takeMoney(int money); 
-	char* strObj(); 
+	char* toString();
 	void setLastOp(int money);
 	void operator -=(int value);
 	void operator +=(int value);
