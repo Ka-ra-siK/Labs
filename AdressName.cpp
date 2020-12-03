@@ -2,19 +2,19 @@
 #include <cstring>
 
 //AdressName::AdressName()
-//Ñòàíäàðòíûé êîíñòðóêòîð äëÿ êëàññà AdressName
-//Ñîçäàåò îáúåêò
+//Ð¡Ñ‚Ð°Ð½Ð´Ð°Ñ€Ñ‚Ð½Ñ‹Ð¹ ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€ Ð´Ð»Ñ ÐºÐ»Ð°ÑÑÐ° AdressName
+//Ð¡Ð¾Ð·Ð´Ð°ÐµÑ‚ Ð¾Ð±ÑŠÐµÐºÑ‚
 AdressName::AdressName() {
 	bank_adress = nullptr;
 	bank_name = nullptr;
 }
 
 //AdressName::AdressName(const char* name, const char* adress, const char* id, int _curr_amount)
-//Êîíñòðóêòîð äëÿ êëàññà AdressName
-//Ñîçäàåò îáúåêò
+//ÐšÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€ Ð´Ð»Ñ ÐºÐ»Ð°ÑÑÐ° AdressName
+//Ð¡Ð¾Ð·Ð´Ð°ÐµÑ‚ Ð¾Ð±ÑŠÐµÐºÑ‚
 //args:
-// - const char* name - íàçâàíèå áàíêîìàòà, const char* adress - àäðåñ ðàñïîëîæåíèÿ áàíêîìàòà, 
-// - const char* id - id áàíêîìàòà, int _curr_amount - êîë-âî äåíåã â áàíêîìàòå
+// - const char* name - Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð±Ð°Ð½ÐºÐ¾Ð¼Ð°Ñ‚Ð°, const char* adress - Ð°Ð´Ñ€ÐµÑ Ñ€Ð°ÑÐ¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ Ð±Ð°Ð½ÐºÐ¾Ð¼Ð°Ñ‚Ð°, 
+// - const char* id - id Ð±Ð°Ð½ÐºÐ¾Ð¼Ð°Ñ‚Ð°, int _curr_amount - ÐºÐ¾Ð»-Ð²Ð¾ Ð´ÐµÐ½ÐµÐ³ Ð² Ð±Ð°Ð½ÐºÐ¾Ð¼Ð°Ñ‚Ðµ
 AdressName::AdressName(const char* adress, const char* name,
 	const char* id, int _curr_amount): Bankomat(id, _curr_amount) {
 	try {
@@ -32,11 +32,11 @@ AdressName::AdressName(const char* adress, const char* name,
 }
 
 //AdressName::AdressName(const AdressName& bank, const Bankomat& bankOr)
-//Êîíñòðóêòîð êîïèðîâàíèÿ êëàññà AdressName
-//Êîïèðóåò îáúåêòû
+//ÐšÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€ ÐºÐ¾Ð¿Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ ÐºÐ»Ð°ÑÑÐ° AdressName
+//ÐšÐ¾Ð¿Ð¸Ñ€ÑƒÐµÑ‚ Ð¾Ð±ÑŠÐµÐºÑ‚Ñ‹
 //args:
-// - const AdressName& bank - îáúåêò ñ êîòîðîãî ñíèìàåòñÿ êîïèÿ
-// - const Bankomat& bankOr - êóäà êîïèðîâàòü
+// - const AdressName& bank - Ð¾Ð±ÑŠÐµÐºÑ‚ Ñ ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð³Ð¾ ÑÐ½Ð¸Ð¼Ð°ÐµÑ‚ÑÑ ÐºÐ¾Ð¿Ð¸Ñ
+// - const Bankomat& bankOr - ÐºÑƒÐ´Ð° ÐºÐ¾Ð¿Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ
 AdressName::AdressName(const AdressName& bank, const Bankomat& bankOr)
 	:Bankomat(bankOr) {
 	if (bank.bank_adress)
@@ -54,31 +54,31 @@ AdressName::AdressName(const AdressName& bank, const Bankomat& bankOr)
 }
 
 //AdressName::~AdressName()
-//Äåñòðóêòîð êëàññà AdressName
-//Óäàëÿåò äèíàìè÷åñêèå ñòðîêè
+//Ð”ÐµÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€ ÐºÐ»Ð°ÑÑÐ° AdressName
+//Ð£Ð´Ð°Ð»ÑÐµÑ‚ Ð´Ð¸Ð½Ð°Ð¼Ð¸Ñ‡ÐµÑÐºÐ¸Ðµ ÑÑ‚Ñ€Ð¾ÐºÐ¸
 AdressName::~AdressName() {
 	delete[]  bank_adress;
 	delete[] bank_name;
 }
 
 //char* AdressName::getAdress()
-//Ïîëó÷èòü Adress îáúåêòà
-//return - Adress îáúåêòà
+//ÐŸÐ¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ Adress Ð¾Ð±ÑŠÐµÐºÑ‚Ð°
+//return - Adress Ð¾Ð±ÑŠÐµÐºÑ‚Ð°
 char* AdressName::getAdress() {
 	return bank_adress;
 }
 
 //char* AdressName::getName()
-//Ïîëó÷èòü Name îáúåêòà
-//return - Name îáúåêòà
+//ÐŸÐ¾Ð»ÑƒÑ‡Ð¸Ñ‚ÑŒ Name Ð¾Ð±ÑŠÐµÐºÑ‚Ð°
+//return - Name Ð¾Ð±ÑŠÐµÐºÑ‚Ð°
 char* AdressName::getName() {
 	return bank_name;
 }
 
 //void AdressName::setAdress(const char* adress)
-//Çàäàòü ñòîðîêó Adress
+//Ð—Ð°Ð´Ð°Ñ‚ÑŒ ÑÑ‚Ð¾Ñ€Ð¾ÐºÑƒ Adress
 //args:
-// - const char* adress - Adress, êîòîðûé íóæíî âïèñàòü îáúåêòó
+// - const char* adress - Adress, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¹ Ð½ÑƒÐ¶Ð½Ð¾ Ð²Ð¿Ð¸ÑÐ°Ñ‚ÑŒ Ð¾Ð±ÑŠÐµÐºÑ‚Ñƒ
 void AdressName::setAdress(const char* adress) {
 	try {
 		int len = strlen(adress);
@@ -92,9 +92,9 @@ void AdressName::setAdress(const char* adress) {
 }
 
 //void AdressName::setName(const char* name)
-//Çàäàòü ñòîðîêó Name
+//Ð—Ð°Ð´Ð°Ñ‚ÑŒ ÑÑ‚Ð¾Ñ€Ð¾ÐºÑƒ Name
 //args:
-// - const char* name - Name, êîòîðûé íóæíî âïèñàòü îáúåêòó
+// - const char* name - Name, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¹ Ð½ÑƒÐ¶Ð½Ð¾ Ð²Ð¿Ð¸ÑÐ°Ñ‚ÑŒ Ð¾Ð±ÑŠÐµÐºÑ‚Ñƒ
 void AdressName::setName(const char* name) {
 	try {
 		int len = strlen(name);
@@ -108,9 +108,9 @@ void AdressName::setName(const char* name) {
 }
 
 // istream & operator >> (istream & is, Bankomat & bank)
-//Ïåðåãðóçêà îïåðàòîðà >> 
+//ÐŸÐµÑ€ÐµÐ³Ñ€ÑƒÐ·ÐºÐ° Ð¾Ð¿ÐµÑ€Ð°Ñ‚Ð¾Ñ€Ð° >> 
 // args:
-// istream& is -- ïîòîê, AdressName& bank -- áàíê
+// istream& is -- Ð¿Ð¾Ñ‚Ð¾Ðº, AdressName& bank -- Ð±Ð°Ð½Ðº
 //returns stream
 istream& operator >> (istream& is, AdressName& bank) {
 	try{
@@ -126,40 +126,23 @@ istream& operator >> (istream& is, AdressName& bank) {
 	}
 }
 //istream& operator << (istream& os, Bankomat& bank)
-//Ïåðåãðóçêà îïåðàòîðà  << operator
+//ÐŸÐµÑ€ÐµÐ³Ñ€ÑƒÐ·ÐºÐ° Ð¾Ð¿ÐµÑ€Ð°Ñ‚Ð¾Ñ€Ð°  << operator
 // args:
-// istream& os -- ïîòîê, AdressName& bank -- áàíê
-//return ïîòîê
+// istream& os -- Ð¿Ð¾Ñ‚Ð¾Ðº, AdressName& bank -- Ð±Ð°Ð½Ðº
+//return Ð¿Ð¾Ñ‚Ð¾Ðº
 ostream& operator << (ostream& os, AdressName& bank) {
 	os << bank.bank_adress << " " << bank.bank_name;
 	return os;
 }
 
 //char* AdressName::toString()
-//Ñòðîêîâîå ïðåäñòàâëåíèå
-//return str - ñòðîêó ñ èíôîðìàöèåé
+//Ð¡Ñ‚Ñ€Ð¾ÐºÐ¾Ð²Ð¾Ðµ Ð¿Ñ€ÐµÐ´ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ
+//return str - ÑÑ‚Ñ€Ð¾ÐºÑƒ Ñ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÐµÐ¹
 char* AdressName::toString() {
-	char* str = new char[256];
-	const char* bankAnounce = " Bank: ";
-	const char* adrAnounce = " Location: ";
-	char* bank_name = this->getName();
-	char* bank_adress = this->getAdress();
-
-	memcpy(str, bankAnounce, strlen(bankAnounce));
-	int sum = strlen(bankAnounce);
-
-	memcpy(str + sum, bank_name, strlen(bank_name));
-	sum += strlen(bank_name);
-
-	memcpy(str + sum, adrAnounce, strlen(adrAnounce));
-	sum += strlen(adrAnounce);
-
-	memcpy(str + sum, bank_adress, strlen(bank_adress));
-	sum += strlen(bank_adress);
-
+	int N = 128;
+	char* str = new char[N];
+	sprintf(str, " Bank: %s Location: %s", bank_name, bank_adress);
 	char* buf = Bankomat::toString();
-	memcpy(str + sum, buf, strlen(buf));
-	sum += strlen(buf);
-	str[sum] = '\0';
+	strcat(str, buf);
 	return str;
 }
