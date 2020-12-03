@@ -9,7 +9,7 @@
 using namespace std;
 
 //Test::Test()
-//Присваиваем значения 0 успехам и провалам
+//РџСЂРёСЃРІР°РёРІР°РµРј Р·РЅР°С‡РµРЅРёСЏ 0 СѓСЃРїРµС…Р°Рј Рё РїСЂРѕРІР°Р»Р°Рј
 Test::Test() {
 	success = 0;
 	success2 = 0;
@@ -20,7 +20,7 @@ Test::Test() {
 }
 
 //bool Test::test_destruct()
-//Тестируем диструктор
+//РўРµСЃС‚РёСЂСѓРµРј РґРёСЃС‚СЂСѓРєС‚РѕСЂ
 //return - true or false
 bool Test::test_destruct() {
 	Bankomat* bank = new Bankomat("OOO00000", 10000);
@@ -40,9 +40,9 @@ bool Test::test_destruct() {
 }
 
 //bool Test::test_id(Bankomat* test_bank)
-//Тестируем написания ID
+//РўРµСЃС‚РёСЂСѓРµРј РЅР°РїРёСЃР°РЅРёСЏ ID
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_id(Bankomat* test_bank) {
 	test_bank->setID("KKK11111");
@@ -62,9 +62,9 @@ bool Test::test_id(Bankomat* test_bank) {
 }
 
 //bool Test::test_get_max(Bankomat* test_bank)
-//Тестируем получение max
+//РўРµСЃС‚РёСЂСѓРµРј РїРѕР»СѓС‡РµРЅРёРµ max
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_get_max(Bankomat* test_bank) {
 	int expect = 10000;
@@ -81,9 +81,9 @@ bool Test::test_get_max(Bankomat* test_bank) {
 }
 
 //bool Test::test_get_min(Bankomat* test_bank) 
-//Тестируем получение min
+//РўРµСЃС‚РёСЂСѓРµРј РїРѕР»СѓС‡РµРЅРёРµ min
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_get_min(Bankomat* test_bank) {
 	int expect = 100;
@@ -100,9 +100,9 @@ bool Test::test_get_min(Bankomat* test_bank) {
 }
 
 //bool Test::test_cur_am(Bankomat* test_bank)
-//Тестируем установки значения в банкомат
+//РўРµСЃС‚РёСЂСѓРµРј СѓСЃС‚Р°РЅРѕРІРєРё Р·РЅР°С‡РµРЅРёСЏ РІ Р±Р°РЅРєРѕРјР°С‚
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_cur_am(Bankomat* test_bank) {
 	test_bank->setCurAmoun(1000);
@@ -120,9 +120,9 @@ bool Test::test_cur_am(Bankomat* test_bank) {
 }
 
 //bool Test::test_load_money(Bankomat* test_bank) 
-//Тестируем загрузки денег в автомат
+//РўРµСЃС‚РёСЂСѓРµРј Р·Р°РіСЂСѓР·РєРё РґРµРЅРµРі РІ Р°РІС‚РѕРјР°С‚
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_load_money(Bankomat* test_bank) {
 	test_bank->setCurAmoun(1000);
@@ -141,9 +141,9 @@ bool Test::test_load_money(Bankomat* test_bank) {
 }
 
 //bool Test::test_take_money(Bankomat* test_bank)
-//Тестируем снятие денег из автомата
+//РўРµСЃС‚РёСЂСѓРµРј СЃРЅСЏС‚РёРµ РґРµРЅРµРі РёР· Р°РІС‚РѕРјР°С‚Р°
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_take_money(Bankomat* test_bank) {
 	test_bank->setCurAmoun(5000);
@@ -162,9 +162,9 @@ bool Test::test_take_money(Bankomat* test_bank) {
 }
 
 //bool Test::test_str_obj(Bankomat* test_bank)
-//Тестируем строковое предлставление объекта 
+//РўРµСЃС‚РёСЂСѓРµРј СЃС‚СЂРѕРєРѕРІРѕРµ РїСЂРµРґР»СЃС‚Р°РІР»РµРЅРёРµ РѕР±СЉРµРєС‚Р° 
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_str_obj(Bankomat* test_bank) {
 	test_bank->setID("KKK11111");
@@ -185,9 +185,9 @@ bool Test::test_str_obj(Bankomat* test_bank) {
 }
 
 //bool Test::test_minus(Bankomat* bank)
-//Тестируем перегрузку -= 
+//РўРµСЃС‚РёСЂСѓРµРј РїРµСЂРµРіСЂСѓР·РєСѓ -= 
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_minus(Bankomat* bank) {
 	int x = 100;
@@ -205,9 +205,9 @@ bool Test::test_minus(Bankomat* bank) {
 	}
 }
 //bool Test::test_less(Bankomat* bank)
-//Тестируем перегрузку <
+//РўРµСЃС‚РёСЂСѓРµРј РїРµСЂРµРіСЂСѓР·РєСѓ <
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_less(Bankomat* bank) {
 
@@ -223,9 +223,9 @@ bool Test::test_less(Bankomat* bank) {
 }
 
 //bool Test::test_plus(Bankomat* bank)
-//Тестируем перегрузку +=
+//РўРµСЃС‚РёСЂСѓРµРј РїРµСЂРµРіСЂСѓР·РєСѓ +=
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_plus(Bankomat* bank) {
 	int x = 100;
@@ -243,9 +243,9 @@ bool Test::test_plus(Bankomat* bank) {
 	}
 }
 //bool Test::test_more(Bankomat* bank)
-//Тестируем перегрузку >
+//РўРµСЃС‚РёСЂСѓРµРј РїРµСЂРµРіСЂСѓР·РєСѓ >
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_more(Bankomat* bank) {
 
@@ -261,9 +261,9 @@ bool Test::test_more(Bankomat* bank) {
 }
 
 //bool Test::test_greater_and_equal(Bankomat* bank)
-//Тестируем перегрузку >=
+//РўРµСЃС‚РёСЂСѓРµРј РїРµСЂРµРіСЂСѓР·РєСѓ >=
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_greater_and_equal(Bankomat* bank) {
 	int x = 900; 
@@ -278,9 +278,9 @@ bool Test::test_greater_and_equal(Bankomat* bank) {
 
 }
 //bool Test::test_less_and_equal(Bankomat* bank)
-//Тестируем перегрузку =<
+//РўРµСЃС‚РёСЂСѓРµРј РїРµСЂРµРіСЂСѓР·РєСѓ =<
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_less_and_equal(Bankomat* bank) {
 	int x = 900; // x = current amount of money. Tests case of equity
@@ -295,9 +295,9 @@ bool Test::test_less_and_equal(Bankomat* bank) {
 	}
 }
 //bool Test::test_assignment(Bankomat* bank)
-//Тестируем перегрузку =
+//РўРµСЃС‚РёСЂСѓРµРј РїРµСЂРµРіСЂСѓР·РєСѓ =
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_assignment(Bankomat* bank) {
 	Bankomat* bank2 = new Bankomat("33333333", 20);
@@ -319,9 +319,9 @@ bool Test::test_assignment(Bankomat* bank) {
 	}
 }
 //bool Test::test_call_func(Bankomat* bank)
-//Тестируем перегрузку функции
+//РўРµСЃС‚РёСЂСѓРµРј РїРµСЂРµРіСЂСѓР·РєСѓ С„СѓРЅРєС†РёРё
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_call_func(Bankomat* bank) {
 
@@ -337,9 +337,9 @@ bool Test::test_call_func(Bankomat* bank) {
 }
 
 //bool Test::test_noLastOperation()
-//Тестируем перегрузку noLastOperation
+//РўРµСЃС‚РёСЂСѓРµРј РїРµСЂРµРіСЂСѓР·РєСѓ noLastOperation
 //args:
-// - Bankomat* test_bank - указатель на объект класса Bankomat
+// - Bankomat* test_bank - СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° Bankomat
 //return - true or false
 bool Test::test_noLastOperation(){
 	Bankomat bank; // there is NULL lastOp in object bank
@@ -354,7 +354,7 @@ bool Test::test_noLastOperation(){
 }
 
 //bool Test::test_text()
-//Тестируем input and output в Txt файле
+//РўРµСЃС‚РёСЂСѓРµРј input and output РІ Txt С„Р°Р№Р»Рµ
 //return - true or false
 bool Test::test_text(FILE *file) {
 	ofstream out(file);
@@ -406,7 +406,7 @@ bool Test::test_text(FILE *file) {
 }
 
 //bool Test::test_bin()
-//Тестируем input and output в Bin файле
+//РўРµСЃС‚РёСЂСѓРµРј input and output РІ Bin С„Р°Р№Р»Рµ
 //return - true or false
 bool Test::test_bin(FILE* file){
 	fstream out(file);//, ios::binary | ios::out);
@@ -455,7 +455,7 @@ bool Test::test_bin(FILE* file){
 }
 
 //bool Test::test_setters()
-//Тестируем сеттеры в child классе
+//РўРµСЃС‚РёСЂСѓРµРј СЃРµС‚С‚РµСЂС‹ РІ child РєР»Р°СЃСЃРµ
 //return - true or false
 bool Test::test_setters() {
 	const char* newBankName = "ALPHA";
@@ -476,7 +476,7 @@ bool Test::test_setters() {
 }
 
 //bool Test::test_withdrawR_money_withdraws()
-//Тестирование снятия денег
+//РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ СЃРЅСЏС‚РёСЏ РґРµРЅРµРі
 //return - true or false
 bool Test::test_withdrawR_money_withdraws() {
 	Bankomat bankTest("1111111", 400);
@@ -495,7 +495,7 @@ bool Test::test_withdrawR_money_withdraws() {
 }
 
 //bool Test::test_withdrawR_arrays_incr()
-//Тестирование увеличения размера массива с датой
+//РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ СѓРІРµР»РёС‡РµРЅРёСЏ СЂР°Р·РјРµСЂР° РјР°СЃСЃРёРІР° СЃ РґР°С‚РѕР№
 //return - true or false
 bool Test::test_withdrawR_arrays_incr() {
 	Bankomat bankTest("1111111", 4000);
@@ -526,7 +526,7 @@ bool Test::test_withdrawR_arrays_incr() {
 /*Lab 5*/
 
 //bool Test::test_polymorh()
-//Тестирование полиморфизма
+//РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ РїРѕР»РёРјРѕСЂС„РёР·РјР°
 //return - true or false
 bool Test::test_polymorh() {
 	Bankomat* objects[4];
@@ -538,10 +538,10 @@ bool Test::test_polymorh() {
 	objects[3] = new AdressName(bankTemp, bankTemp2);
 	int count = 4;
 	const char* expected[4];
-	expected[0] = "AAAAAAAA10010000";
-	expected[1] = " Bank: SBER  Location: MARX-20 CCCCCCCCC40010000";
-	expected[2] = "AAAAAAAA10010000";
-	expected[3] = " Bank: SBER  Location: MARX-20 DDDDDDDD99910000";
+	expected[0] = "ID:AAAAAAAA Money:100 Max:10000";
+	expected[1] = " Bank: SBER  Location: MARX-20 ID:CCCCCCCCC Money:400 Max:10000";
+	expected[2] = "ID:AAAAAAAA Money:100 Max:10000";
+	expected[3] = " Bank: SBER  Location: MARX-20 ID:DDDDDDDD Money:999 Max:10000";
 	for (int i = 0; i < 4; i++) {
 		if (strcmp(objects[i]->toString(), expected[i]) != 0)
 		{
@@ -566,7 +566,7 @@ bool Test::test_polymorh() {
 }
 
 //bool Test::test_tree_create_test()
-//Тестирование создание дерева
+//РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ СЃРѕР·РґР°РЅРёРµ РґРµСЂРµРІР°
 //return - true or false
 bool Test::test_tree_create_test() {
 	const int N = 5;
@@ -594,7 +594,7 @@ bool Test::test_tree_create_test() {
 }
 
 //bool Test::test_delete_node_with_children()
-//Тестирование удаления узла с дочерними элементами
+//РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ СѓРґР°Р»РµРЅРёСЏ СѓР·Р»Р° СЃ РґРѕС‡РµСЂРЅРёРјРё СЌР»РµРјРµРЅС‚Р°РјРё
 //return - true or false
 bool Test::test_delete_node_with_children() {
 	const int N = 5;
@@ -625,7 +625,7 @@ bool Test::test_delete_node_with_children() {
 }
 
 //bool Test::test_find_none_null()
-//Тестирование поиск
+//РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ РїРѕРёСЃРє
 //return - true or false
 bool Test::test_find_none_null() {
 	const int N = 5;
@@ -642,7 +642,7 @@ bool Test::test_find_none_null() {
 		t.addBank(objects[i]);
 	}
 	node* d = t.findBank(objects[1]);
-	const char* expected = " Bank: SberBank  Location: Lenina CCCCCCCCC40010000";
+	const char* expected = " Bank: SberBank  Location: Lenina ID:CCCCCCCCC Money:400 Max:10000";
 	if (strcmp(d->bank->toString(), expected) == 0) {
 		cout << "Found: " << endl << d->bank->toString() << endl;
 		success3++;
@@ -658,7 +658,7 @@ bool Test::test_find_none_null() {
 }
 
 //bool Test::test_find_null()
-//Тестирование поиск
+//РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ РїРѕРёСЃРє
 //return - true or false
 bool Test::test_find_null(){
 	const int N = 5;
