@@ -89,15 +89,20 @@ void testingHeirClass() {
 	cout << "\nFailed: " << test.fail2 << "\n";
 }
 
-void testingPolymorh() {
+void testingPolymorh() { //Полиморфизм
+	Bankomat* obj;
+	AdressName bankTemp("Lenina ", "Sberbank ", "IDDQD", 2000);
+	Bankomat bankTemp2("IDDQD", 1000);
+	obj = new Report(bankTemp, bankTemp2, 451, 404);
 	Test test;
-	cout << "Test 1 " << test.test_polymorh() << endl;
-	cout << "Test 2 " << test.test_tree_create_test() << endl;
-	cout << "Test 3 " << test.test_delete_node_with_children() << endl;
-	cout << "Test 4 " << test.test_find_none_null() << endl;
-	cout << "Test 5 " << test.test_find_null() << endl;
-	cout << "Successful: " << test.success3 << "/" << "5" << endl;
-	cout << "Failed: " << test.fail3 << endl;
+	cout << "Test 1 " << test.test_polymorh() << "\n";
+	cout << "Test 2 " << test.test_tree_create_test() << "\n";
+	cout << "Test 3 " << test.test_delete_node_with_children() << "\n";
+	cout << "Test 4 " << test.test_find_none_null() << "\n";
+	cout << "Test 5 " << test.test_find_null() << "\n";
+	cout << "Successful: " << test.success3 << "/" << "5\n";
+	cout << "Failed: " << test.fail3 << "\n\n\n";
+	cout << obj->toString() << "\n";
 }
 
 int main() {
