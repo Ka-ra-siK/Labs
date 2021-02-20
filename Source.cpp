@@ -51,7 +51,7 @@ void getDeterminant(float** a) {
     float det = 1.0;
     for (int i = 0; i < N; i++)
         det *= a[i][i];
-    //printf("Îïğåäåëèòåëü ìàòğèöû = %.3lf\n", det);
+    //printf("ĞĞ¿Ñ€ĞµĞ´ĞµĞ»Ğ¸Ñ‚ĞµĞ»ÑŒ Ğ¼Ğ°Ñ‚Ñ€Ğ¸Ñ†Ñ‹ = %.3lf\n", det);
 }
 
 void findDeterminand() {
@@ -60,10 +60,10 @@ void findDeterminand() {
     for (int i = 0; i < N; i++)
         a[i] = (float*)malloc((N + 1) * sizeof(int));
     getMatrix(a);
-    //printf("Ìàòğèöà: \n");
+    //printf("ĞœĞ°Ñ‚Ñ€Ğ¸Ñ†Ğ°: \n");
     //outMatrix(a);
     gaussMethod(a);
-   // printf("Ñòóïåí÷àòûé âèä ìàòğèöû: \n");
+   // printf("Ğ¡Ñ‚ÑƒĞ¿ĞµĞ½Ñ‡Ğ°Ñ‚Ñ‹Ğ¹ Ğ²Ğ¸Ğ´ Ğ¼Ğ°Ñ‚Ñ€Ğ¸Ñ†Ñ‹: \n");
     //outMatrix(a);
     getDeterminant(a);
     for (int i = 0; i < N; i++) {
@@ -82,10 +82,10 @@ int main() {
     int before = clock();
     findDeterminand();
     int time = (clock() - before) * 1000;
-    printf("Âğåìÿ: %d ìñ\n\n", time);
+    printf("Ğ’Ñ€ĞµĞ¼Ñ: %d Ğ¼Ñ\n\n", time);
 
     text = fopen("text.txt", "a");
-    fprintf(text, "Âğåìÿ: %d ìñ     Ğàçìåğ ìàòğèöû: %d\n", time, size);
+    fprintf(text, "Ğ’Ñ€ĞµĞ¼Ñ: %d Ã¬Ã±     Ğ Ğ°Ğ·Ğ¼ĞµÑ€ Ğ¼Ğ°Ñ‚Ñ€Ğ¸Ñ†Ñ‹: %d\n", time, size);
     fclose(text);
 
     system("pause");
