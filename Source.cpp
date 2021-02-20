@@ -6,7 +6,7 @@
 #include <time.h>
 #include <locale.h>
 
-#define N 900
+#define N 1000
 
 void outMatrix(float** a) {
     for (int i = 0; i < N; ++i) {
